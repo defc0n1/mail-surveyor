@@ -1,0 +1,12 @@
+<template name="app">
+    {{view}}
+
+    {{> header}}
+    {{#if isEdit}}
+        {{> surveyInfo}}
+        {{> surveyRecipients}}
+        {{> surveyActions}}
+    {{/if}}
+
+
+</template>

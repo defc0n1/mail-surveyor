@@ -1,0 +1,12 @@
+<template name="surveyRecipients">
+    <h2><a href="/" class="toggle">Recipients >> {{view}}</a></h2>
+    <span id="recipients">
+        {{> newRecipientForm}}
+
+        <div id="main" class="row-fluid">
+            {{#each recipients}}
+                {{> recipientItem}}
+            {{/each}}
+        </div>
+    </span>
+</template>
