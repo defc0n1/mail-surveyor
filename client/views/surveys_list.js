@@ -2,13 +2,13 @@
 Template.surveysList.events({
     'click #btn-new-survey': function (e) {
         e.preventDefault();
+        // todo check logged in
         var survey = {
             created_at: new Date(),
             owner_id: Meteor.userId(),
             mail: Meteor.user().emails[0].address
         }
         survey._id = Surveys.insert(survey);
-        //Backbone.history.navigate("edit/"+survey._id, true);
         Router.go('surveyEdit', {_id: survey._id})
     },
     'click .delete': function (e) {
