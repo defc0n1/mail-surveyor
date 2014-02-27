@@ -1,0 +1,36 @@
+<template name="surveyEdit">
+    {{> surveyInfo survey}}
+    {{> surveyRecipients }}
+    {{> surveyActions }}
+</template>
+
+<template name="surveyInfo">
+    <h2><a href="/" class="toggle">Information</a></h2>
+    <span id="survey">
+        <p>Created on {{created_at}} by {{owner_id}}</p>
+        <p>
+        Miscellaneous survey info should go here.
+        </p>
+    </span>
+</template>
+
+<template name="surveyRecipients">
+    <h2><a href="/" class="toggle">Recipients</a></h2>
+    <span id="recipients">
+        {{> newRecipientForm}}
+
+        <div id="main" class="row-fluid">
+            {{#each recipients}}
+                {{> recipientItem}}
+            {{/each}}
+        </div>
+    </span>
+</template>
+
+<template name="surveyActions">
+    <h2><a href="/" class="toggle">Actions</a></h2>
+    <span id="sendMail">
+        <a href="/" class="btn btn-danger">Send!</a>
+        <a href="/" class="btn btn-primary">Test Send</a>
+    </span>
+</template>

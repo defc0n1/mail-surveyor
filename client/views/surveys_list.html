@@ -4,6 +4,7 @@
     </span>
 
     <div id="main" class="row-fluid">
+        all surveys
         {{#each surveys}}
             {{> surveyItem}}
         {{/each}}
@@ -20,7 +21,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <a class="btn btn-primary edit" id="{{_id}}" href="/">Edit</a>
+                <a class="btn btn-primary edit" id="{{_id}}" href="{{pathFor 'surveyEdit'}}">Edit</a>
                 <a class="btn btn-danger delete" id="{{_id}}" href="/">Delete</a>
             </div>
         </div>
