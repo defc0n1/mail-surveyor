@@ -4,28 +4,24 @@
 Meteor.subscribe("recipients");
 Meteor.subscribe("surveys");
 
+var msc = window.mailSurveyor.const;
+
 MyRouter = Backbone.Router.extend({
     routes: {
         '': 'list',
-        'new': 'new',
         'edit/:id': 'edit',
         ':id': 'fill'
     },
     list: function(){
-        Session.set('view','list');
-    },
-    new: function(){
-        Session.set('view','new');
-        Session.set('surveyId', undefined);
+        window.mailSurveyor.current_view = msc.VIEW_LIST;
     },
     edit: function(id){
-        Session.set('view','edit');
-        Session.set('surveyId',id);
+        window.mailSurveyor.current_view = msc.VIEW_EDIT;
+        window.mailSurveyor.survey = id;
     },
     fill: function(id){
-        Session.set('view','fill');
-        Session.set('surveyId',id);
-    }
+        window.mailSurveyor.current_view = msc.VIEW_FILL;
+        window.mailSurveyor.survey = id;    }
 });
 
 Meteor.startup(function(){

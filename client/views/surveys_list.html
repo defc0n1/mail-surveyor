@@ -1,0 +1,28 @@
+<template name="surveysList">
+    <span id="sendMail">
+        <a href="" class="btn btn-primary" id="btn-new-survey">New</a>
+    </span>
+
+    <div id="main" class="row-fluid">
+        {{#each surveys}}
+            {{> surveyItem}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="surveyItem">
+    <div class="recipient">
+        <div class="recipient-content">
+            <h3>
+                {{name}}</a>
+                <span>({{created_at}})</span>
+            </h3>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a class="btn btn-primary edit" id="{{_id}}" href="/">Edit</a>
+                <a class="btn btn-danger delete" id="{{_id}}" href="/">Delete</a>
+            </div>
+        </div>
+    </div>
+</template>

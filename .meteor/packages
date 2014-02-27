@@ -7,7 +7,7 @@ standard-app-packages
 insecure
 preserve-inputs
 bootstrap
-backbone
 accounts-base
 accounts-password
 accounts-ui
+iron-router
