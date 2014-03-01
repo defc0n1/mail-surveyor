@@ -27,4 +27,4 @@ All the beauty is theirs, the ugliness is me slowly learning it...
 [Steven Levithan's date.format.js](http://blog.stevenlevithan.com/archives/date-time-format) for a _really_ compact
 date formatting lib.
 
-[Mark Dotto's HTML/CSS guide](http://mdo.github.io/code-guide/), because you need consistency for sanity.
+[Mark Otto's HTML/CSS guide](http://mdo.github.io/code-guide/), because you need consistency for sanity.
