@@ -1,28 +1,26 @@
 <template name="surveysList">
-    <div id="main" class="row-fluid">
-        <form class="form-inline">
-            <div>
-                <h2>All your surveys</h2>
-                <button class="btn btn-primary btn-sm" id="btn-new-survey">Create new survey</button>
-            </div>
-            <div class="list-group">
-                {{#each surveys}}
-                    {{> surveyItem}}
-                {{/each}}
-            </div>
-        </form>
-    </div>
+  <div class="row-fluid">
+    <form class="form-inline">
+      <h2>All your surveys</h2>
+      <button class="btn btn-primary btn-sm" id="btn-new-survey">Create new survey</button>
+      <div class="list-group">
+        {{#each surveys}}
+        {{> surveyItem}}
+        {{/each}}
+      </div>
+    </form>
+  </div>
 </template>
 
 <template name="surveyItem">
-        <span class="input-group">
-            <a href="{{pathFor 'surveyEdit'}}" class="list-group-item">
-                {{name}}
-                <span class="badge">{{count}}</span>
-                <small>({{created_at}})</small>
-            </a>
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-danger delete" data-survey="{{_id}}">Delete</button>
-            </span>
+    <span class="input-group">
+        <a class="list-group-item" href="{{pathFor 'surveyEdit'}}">
+          {{name}}
+          <span class="badge">{{count}}</span>
+          <small>({{created_at}})</small>
+        </a>
+        <span class="input-group-btn">
+            <button class="btn btn-danger delete" data-survey="{{_id}}" type="button">Delete</button>
         </span>
+    </span>
 </template>

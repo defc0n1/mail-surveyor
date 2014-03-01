@@ -8,7 +8,8 @@ Mail surveys made easy (with a Meteor application).
 Mail-surveyor is a web application that lets you define surveys and recipients, then mails the survey to the recipients.
 It tracks their answers and provide you with a basic dashboard to follow-up.
 
-I developed it as a way to validate software product ideas for my bootstrapped business - and learn Meteor at the same time.
+I developed it as a way to validate software product ideas for my bootstrapped business,
+and learn Meteor at the same time.
 
 Used libraries
 --------------
@@ -23,4 +24,7 @@ work of all these talented people.
 for an incredibly beautiful front-end framework.
 All the beauty is theirs, the ugliness is me slowly learning it...
 
-[date.format.js](http://blog.stevenlevithan.com/archives/date-time-format) for a _really_ compact date formatting lib.
+[Steven Levithan's date.format.js](http://blog.stevenlevithan.com/archives/date-time-format) for a _really_ compact
+date formatting lib.
+
+[Mark Dotto's HTML/CSS guide](http://mdo.github.io/code-guide/), because you need consistency for sanity.
