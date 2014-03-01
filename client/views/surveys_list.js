@@ -13,10 +13,10 @@ Template.surveysList.events({
             survey_body: undefined,
             status: 'new',
             recipients: []
-        }
+        };
         survey._id = Surveys.insert(survey);
         console.log("added survey "+survey._id);
-        Router.go('surveyEdit', {_id: survey._id})
+        Router.go('surveyEdit', {_id: survey._id});
     },
     'click .delete': function (e) {
         e.preventDefault();
@@ -33,5 +33,11 @@ Template.surveysList.events({
 Template.surveyItem.helpers({
     'count': function(){
         return this.recipients ? this.recipients.length : 0;
+    },
+    'name': function(){
+        return this.name ? this.name : new Handlebars.SafeString('<i>untitled</i>');
+    },
+    'created_at': function(){
+        return dateFormat(this.created_at, 'mmm d, yyyy');
     }
-})
+});
