@@ -1,14 +1,12 @@
 <template name="newRecipientForm">
-    <div class="recipient">
-        <div class="recipient-content" id="newRecipientForm">
-            <h3>
-                New:
-                <input class="field" name="name" type="text" value="" placeholder="name - John Doe"/>
-                <input class="field" name="mail" type="text" value="" placeholder="mail - john.doe@example.com"/>
-            </h3>
+    <form class="form-inline" role="form">
+        <label class="col-sm-2 control-label">New recipient</label>
+
+        <div class="form-group col-sm-10">
+            <!--<label class="sr-only" for="rec-name-input">Name</label>-->
+            <input type="text" class="form-control" id="rec-name-input" placeholder="name - John Doe"/>
+            <input type="email" class="form-control" id="rec-mail-input" placeholder="mail - john@doe.com"/>
+            <button type="button" class="btn btn-default">Add</button>
         </div>
-        <div class="control-group">
-            <a href="/" class="btn btn-primary">Add</a>
-        </div>
-    </div>
+    </form>
 </template>

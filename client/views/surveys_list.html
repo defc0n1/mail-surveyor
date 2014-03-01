@@ -1,29 +1,28 @@
 <template name="surveysList">
-    <span id="sendMail">
-        <a href="" class="btn btn-primary" id="btn-new-survey">New</a>
-    </span>
-
     <div id="main" class="row-fluid">
-        all surveys
-        {{#each surveys}}
-            {{> surveyItem}}
-        {{/each}}
+        <form class="form-inline">
+            <div>
+                <h2>All your surveys</h2>
+                <button class="btn btn-primary btn-sm" id="btn-new-survey">Create new survey</button>
+            </div>
+            <div class="list-group">
+                {{#each surveys}}
+                    {{> surveyItem}}
+                {{/each}}
+            </div>
+        </form>
     </div>
 </template>
 
 <template name="surveyItem">
-    <div class="recipient">
-        <div class="recipient-content">
-            <h3>
-                {{name}}</a>
-                <span>({{created_at}})</span>
-            </h3>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <a class="btn btn-primary edit" id="{{_id}}" href="{{pathFor 'surveyEdit'}}">Edit</a>
-                <a class="btn btn-danger delete" id="{{_id}}" href="/">Delete</a>
-            </div>
-        </div>
-    </div>
+        <span class="input-group">
+            <a href="{{pathFor 'surveyEdit'}}" class="list-group-item">
+                {{name}}
+                <span class="badge">{{count}}</span>
+                <small>({{created_at}})</small>
+            </a>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-danger delete" data-survey="{{_id}}">Delete</button>
+            </span>
+        </span>
 </template>

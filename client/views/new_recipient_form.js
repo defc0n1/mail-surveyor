@@ -4,10 +4,12 @@
 Template.newRecipientForm.events({
     'click .btn': function(e) {
         e.preventDefault();
-        var recipient = {
-            name: $('#newRecipientForm').find('[name="name"]').val(),
-            mail: $('#newRecipientForm').find('[name="mail"]').val()
+        var newRecipient = {
+            name: $('#rec-name-input').val(),
+            mail: $('#rec-mail-input').val()
         }
-        recipient._id = Recipients.insert(recipient);
+        console.log("adding "+JSON.stringify(newRecipient)+" to "+this._id);
+        // todo check for duplicates on mail before inserting
+        Surveys.update({_id: this._id}, {$push: {"recipients": newRecipient}})
     }
 });

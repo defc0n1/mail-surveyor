@@ -1,36 +1,136 @@
 <template name="surveyEdit">
-    {{> surveyInfo survey}}
-    {{> surveyRecipients }}
-    {{> surveyActions }}
-</template>
+    <h2>Survey "{{survey.name}}"</h2>
+    <ul class="nav nav-tabs" id="survey-tabs">
+        <li class="active"><a href="#survey-main" data-toggle="tab">Main</a></li>
+        <li><a href="#survey-participants" data-toggle="tab">Participants</a></li>
+        <li><a href="#survey-invitation" data-toggle="tab">Invitation</a></li>
+        <li><a href="#survey-survey" data-toggle="tab">Survey</a></li>
+    </ul>
+    <div class="tab-content">
+        {{> surveyMain survey}}
+        {{> surveyParticipants survey}}
+        {{> surveyInvitation survey}}
+        {{> surveySurvey survey}}
+    </div>
 
-<template name="surveyInfo">
-    <h2><a href="/" class="toggle">Information</a></h2>
-    <span id="survey">
-        <p>Created on {{created_at}} by {{owner_id}}</p>
-        <p>
-        Miscellaneous survey info should go here.
-        </p>
-    </span>
-</template>
+    <hr/>
+    <button type="button" class="btn btn-primary btn-block" id="surv-save-btn">Save</button>
 
-<template name="surveyRecipients">
-    <h2><a href="/" class="toggle">Recipients</a></h2>
-    <span id="recipients">
-        {{> newRecipientForm}}
-
-        <div id="main" class="row-fluid">
-            {{#each recipients}}
-                {{> recipientItem}}
-            {{/each}}
-        </div>
-    </span>
-</template>
-
-<template name="surveyActions">
-    <h2><a href="/" class="toggle">Actions</a></h2>
-    <span id="sendMail">
+    <div id="sendMail">
         <a href="/" class="btn btn-danger">Send!</a>
         <a href="/" class="btn btn-primary">Test Send</a>
-    </span>
+    </div>
+</template>
+
+<template name="surveyMain">
+    <div class="tab-pane active" id="survey-main">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="surv-name-input" class="col-sm-2 control-label">Name</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="surv-name-input" placeholder="memorable name, just for you"
+                           value="{{name}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Created on</label>
+
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{created_at}}</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Link to survey</label>
+
+                <div class="col-sm-10">
+                    <p class="form-control-static"><a href="{{urlFill}}">{{urlFill}}</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>
+
+<template name="surveyParticipants">
+    <div class="tab-pane" id="survey-participants">
+        <input type="hidden" value={{_id}} id="surv-id"/>
+        {{> newRecipientForm this}}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>email</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each recipients}}
+            <tr>
+                <td>{{name}}</td>
+                <td><a href="mailto:{{mail}}">{{mail}}</a></td>
+                <td><button type="button" class="btn btn-danger delete" data-mail="{{mail}}">Delete</button></td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<template name="surveyInvitation">
+    <div class="tab-pane" id="survey-invitation">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="mail-subject-input" class="col-sm-2 control-label">Subject</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="mail-subject-input"
+                           placeholder="catchy subject line goes here"
+                           value="{{mail_subject}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mail-from-input" class="col-sm-2 control-label">Sent from</label>
+
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="mail-from-input" placeholder="me@example.com"
+                           value="{{mail_from}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mail-body-input" class="col-sm-2 control-label">Text</label>
+
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="10" id="mail-body-input" placeholder="why should your recipients spend time to answer your survey?">{{mail_body}}</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>
+
+<template name="surveySurvey">
+    <div class="tab-pane" id="survey-survey">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="surv-title-input" class="col-sm-2 control-label">Survey page title</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="surv-title-input"
+                           placeholder="catchy subject line goes here"
+                           value="{{survey_title}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="surv-body-input" class="col-sm-2 control-label">Survey page</label>
+
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="20" id="surv-body-input" placeholder="use Markdown">{{survey_body}}</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
 </template>

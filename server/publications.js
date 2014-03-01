@@ -6,6 +6,5 @@ Meteor.publish('recipients', function() {
 });
 
 Meteor.publish('surveys', function() {
-//    return Surveys.find();
     return Surveys.find({owner_id: this.userId});
 });

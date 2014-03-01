@@ -6,8 +6,8 @@
 standard-app-packages
 insecure
 preserve-inputs
-bootstrap
 accounts-base
 accounts-password
-accounts-ui
 iron-router
+bootstrap-3
+accounts-ui-bootstrap-3

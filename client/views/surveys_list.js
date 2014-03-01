@@ -1,30 +1,37 @@
-
 Template.surveysList.events({
     'click #btn-new-survey': function (e) {
         e.preventDefault();
         // todo check logged in
         var survey = {
-            created_at: new Date(),
             owner_id: Meteor.userId(),
-            mail: Meteor.user().emails[0].address
+            created_at: new Date(),
+            name: undefined,
+            mail_from: Meteor.user().emails[0].address,
+            mail_subject: undefined,
+            mail_body: undefined,
+            survey_title: undefined,
+            survey_body: undefined,
+            status: 'new',
+            recipients: []
         }
         survey._id = Surveys.insert(survey);
+        console.log("added survey "+survey._id);
         Router.go('surveyEdit', {_id: survey._id})
     },
     'click .delete': function (e) {
         e.preventDefault();
-        var idDel = e.target.id;
-        var surv = Surveys.findOne(idDel);
-        //console.log(idDel);
+        // todo check user logged in, survey exists, and is owner
+        var surveyId = e.target.getAttribute('data-survey');
+        var surv = Surveys.findOne(surveyId);
+        console.log("deleting survey " + surveyId);
         if (confirm("Delete this survey ("+surv.name+")?")) {
-            Surveys.remove(idDel);
+            Surveys.remove(surveyId);
         }
-    }/*,
-    'click .edit': function (e) {
-        e.preventDefault();
-        var idEdit = e.target.id;
-        var rec = Surveys.findOne(idEdit);
-        //todo check exists + user authorized to edit
-        Backbone.history.navigate("edit/"+idEdit);
-    }*/
+    }
 });
+
+Template.surveyItem.helpers({
+    'count': function(){
+        return this.recipients.length;
+    }
+})
