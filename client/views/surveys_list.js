@@ -32,6 +32,6 @@ Template.surveysList.events({
 
 Template.surveyItem.helpers({
     'count': function(){
-        return this.recipients.length;
+        return this.recipients ? this.recipients.length : 0;
     }
 })

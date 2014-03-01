@@ -7,7 +7,8 @@ Template.surveyEdit.events({
             mail_from: $('#mail-from-input').val(),
             mail_body: $('#mail-body-input').val(),
             survey_title: $('#surv-title-input').val(),
-            survey_body: $('#surv-body-input').val()
+            survey_body: $('#surv-body-input').val(),
+            recipients: []
         };
         var surveyId = $('#surv-id').val();
         console.log("updating survey "+surveyId+" with "+JSON.stringify(survSet));
