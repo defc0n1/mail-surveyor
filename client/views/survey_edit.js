@@ -1,3 +1,9 @@
+Template.surveyEdit.helpers({
+   'surveyName': function(){
+       return surveyName(this.survey.name);
+   }
+});
+
 Template.surveyEdit.events({
     'click #surv-save-btn': function(e){
         e.preventDefault();

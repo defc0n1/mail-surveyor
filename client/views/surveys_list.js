@@ -35,7 +35,7 @@ Template.surveyItem.helpers({
         return this.recipients ? this.recipients.length : 0;
     },
     'name': function(){
-        return this.name ? this.name : new Handlebars.SafeString('<i>untitled</i>');
+        return surveyName(this.name);
     },
     'created_at': function(){
         return dateFormat(this.created_at, 'mmm d, yyyy');
