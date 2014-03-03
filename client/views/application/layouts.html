@@ -1,0 +1,53 @@
+<template name="layout">
+  {{setTitle "Mail Surveyor"}}
+  <div class="container">
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#nav-main-bar" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{pathFor 'surveysList'}}">Mail Surveyor</a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="nav-main-bar">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">All surveys <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                {{#each surveysShortList}}
+                  <li><a href="{{pathFor 'surveyEdit'}}">{{name}}</a></li>
+                {{/each}}
+                {{#if hasMoreSurveys}}
+                  <li><a href="{{pathFor 'surveysList'}}">(more)...</a></li>
+                {{/if}}
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-link">{{loginButtons}}</li>
+          </ul>
+        </div> <!-- /#nav-main-bar -->
+      </div>
+    </nav> <!-- /.navbar -->
+
+    <div class="main">
+      {{yield}}
+    </div>
+
+  </div>
+  <!-- /.container -->
+</template>
+
+<template name="layoutFill">
+  <div class="container">
+    <div class="main">
+      {{yield}}
+    </div>
+  </div>
+</template>

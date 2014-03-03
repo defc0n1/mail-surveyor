@@ -14,20 +14,20 @@
   </div>
 
   <hr/>
-  <button class="btn btn-primary btn-block" id="surv-save-btn" type="button">Save</button>
-  <button class="btn btn-danger" id="surv-send-btn" type="button">Send!</button>
-  <button class="btn" id="surv-test-btn" type="button">Test</button>
+  <button class="btn btn-primary btn-block" id="survey-save-btn" type="button">Save</button>
+  <button class="btn btn-danger" id="survey-send-btn" type="button">Send!</button>
+  <button class="btn" id="survey-test-btn" type="button">Test</button>
 </template>
 
 <template name="surveyMain">
   <div class="tab-pane active" id="survey-main">
     <form class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="surv-name-input">Name</label>
+        <label class="col-sm-2 control-label" for="survey-name-input">Name</label>
 
         <div class="col-sm-10">
-          <input class="form-control" id="surv-name-input" type="text" placeholder="memorable name, just for you"
-                 value="{{name}}">
+          <input class="form-control" id="survey-name-input" type="text" placeholder="memorable name, just for you"
+                 value="{{survey_name}}">
         </div>
       </div>
 
@@ -52,24 +52,31 @@
 
 <template name="surveyParticipants">
   <div class="tab-pane" id="survey-participants">
-    <input id="surv-id" type="hidden" value="{{_id}}"/>
+    <input id="survey-id-input" type="hidden" value="{{_id}}"/>
     {{> newRecipientForm this}}
     <table class="table table-striped">
       <thead>
       <tr>
         <th>Name</th>
         <th>email</th>
+        <th>link</th>
+        <th>results</th>
         <th>actions</th>
       </tr>
       </thead>
       <tbody>
       {{#each recipients}}
       <tr>
-        <td>{{name}}</td>
-        <td><a href="mailto:{{mail}}">{{mail}}</a></td>
+        <td>{{recipient_name}}</td>
+        <td><a href="mailto:{{recipient_mail}}">{{recipient_mail}}</a></td>
+        <td><a href="{{urlFill ../_id}}">Fill</a></td>
         <td>
-          <a class="btn btn-default" href="{{{urlSurvey ../_id}}}">Fill</a>
-          <button class="btn btn-danger delete" data-mail="{{mail}}" type="button">Delete</button>
+          {{#if recipient_result}}
+          <a href="{{urlResults ../../_id}}">See</a>
+          {{/if}}
+        </td>
+        <td>
+          <button class="btn btn-danger delete" data-mail="{{recipient_mail}}" type="button">Delete</button>
         </td>
       </tr>
       {{/each}}
@@ -116,20 +123,20 @@
   <div class="tab-pane" id="survey-survey">
     <form class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="surv-title-input">Survey page title</label>
+        <label class="col-sm-2 control-label" for="survey-title-input">Survey page title</label>
 
         <div class="col-sm-10">
-          <input class="form-control" id="surv-title-input" type="text"
+          <input class="form-control" id="survey-title-input" type="text"
                  placeholder="catchy subject line goes here"
                  value="{{survey_title}}">
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="surv-body-input">Survey page</label>
+        <label class="col-sm-2 control-label" for="survey-body-input">Survey page</label>
 
         <div class="col-sm-10">
-          <textarea class="form-control" id="surv-body-input" rows="20"
+          <textarea class="form-control" id="survey-body-input" rows="20"
                     placeholder="use Markdown">{{survey_body}}</textarea>
         </div>
       </div>

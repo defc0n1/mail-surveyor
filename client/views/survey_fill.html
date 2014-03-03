@@ -3,24 +3,21 @@
   {{#if canEdit}}
   <a href="{{urlFor 'surveyEdit'}}">Edit</a>
   {{/if}}
-  <h1>{{this.survey.survey_title}}</h1>
+  <h1>{{survey.survey_title}}</h1>
 
-  Hello, {{recipient.name}}
-
-  <input id="surv-id" type="hidden" value="{{_id}}"/>
-  {{#if mail}}
-  <input id="rec-mail-input" type="hidden" value="{{mail}}"/>
+  <input id="survey-id" type="hidden" value="{{_id}}"/>
+  {{#if recipient}}
+    Hello {{recipient.recipient_name}},
+    <input id="recipient-mail-input" type="hidden" value="{{recipient.recipient_mail}}"/>
   {{else}}
-  <label for="rec-mail-input">Please provide your mail address:</label>
-  <input id="rec-mail-input" type="email" value="{{mail}}"/>
+    <label for="new-mail-input">Hi, please provide your mail address:</label>
+    <input id="new-mail-input" type="email" value="{{recipient_mail}}"/>
   {{/if}}
   <hr/>
 
-  <form id="surv-main-form">
-    {{{survey.survey_body}}}
+  {{{survey.survey_body}}}
 
-    <hr/>
+  <hr/>
 
-    <button class="btn btn-primary btn-block" id="surv-save-btn">Save</button>
-  </form>
+  <button class="btn btn-primary btn-block" id="survey-save-btn">Save</button>
 </template>
