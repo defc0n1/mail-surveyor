@@ -1,17 +1,11 @@
 <template name="surveyFill">
-  {{setTitle survey.survey_title}}
-  {{#if canEdit}}
-  <a href="{{urlFor 'surveyEdit'}}">Edit</a>
-  {{/if}}
-  <h1>{{survey.survey_title}}</h1>
-
-  <input id="survey-id" type="hidden" value="{{_id}}"/>
+  <input id="survey-id-input" type="hidden" value="{{survey._id}}"/>
   {{#if recipient}}
     Hello {{recipient.recipient_name}},
-    <input id="recipient-mail-input" type="hidden" value="{{recipient.recipient_mail}}"/>
+    <input id="recipient-id-input" type="hidden" value="{{recipient._id}}"/>
   {{else}}
-    <label for="new-mail-input">Hi, please provide your mail address:</label>
-    <input id="new-mail-input" type="email" value="{{recipient_mail}}"/>
+    <label for="recipient-mail-input">Hi, please provide your mail address:</label>
+    <input id="recipient-mail-input" type="email" value="{{recipient_mail}}"/>
   {{/if}}
   <hr/>
 

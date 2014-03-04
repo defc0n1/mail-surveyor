@@ -14,9 +14,9 @@
 
 <template name="surveyItem">
     <span class="input-group">
-        <a class="list-group-item" href="{{pathFor 'surveyEdit'}}">
+        <a class="list-group-item" href="{{urlEdit _id}}">
           {{name}}
-          <span class="badge">{{count}}</span>
+          <span class="badge">{{recipients_count}}</span>
           <small>({{created_at}})</small>
         </a>
         <span class="input-group-btn">

@@ -2,7 +2,7 @@
   <h2>{{surveyName}}</h2>
   <ul class="nav nav-tabs" id="survey-tabs">
     <li class="active"><a data-toggle="tab" href="#survey-main">Main</a></li>
-    <li><a data-toggle="tab" href="#survey-participants">Participants</a></li>
+    <li><a data-toggle="tab" href="#survey-participants">Participants<span class="badge">{{survey.recipients_count}}</span></a></li>
     <li><a data-toggle="tab" href="#survey-invitation">Invitation</a></li>
     <li><a data-toggle="tab" href="#survey-survey">Survey</a></li>
   </ul>
@@ -43,7 +43,7 @@
         <label class="col-sm-2 control-label">Link to survey</label>
 
         <div class="col-sm-10">
-          <p class="form-control-static"><a href="{{urlFill}}">{{urlFill}}</a></p>
+          <p class="form-control-static"><a href="{{urlFill _id null}}">{{urlFill _id null}}</a></p>
         </div>
       </div>
     </form>
@@ -69,14 +69,14 @@
       <tr>
         <td>{{recipient_name}}</td>
         <td><a href="mailto:{{recipient_mail}}">{{recipient_mail}}</a></td>
-        <td><a href="{{urlFill ../_id}}">Fill</a></td>
+        <td><a href="{{urlFill ../_id _id}}">Fill</a></td>
         <td>
           {{#if recipient_result}}
-          <a href="{{urlResults ../../_id}}">See</a>
+          <a href="{{urlResults ../../_id ../_id}}">See</a>
           {{/if}}
         </td>
         <td>
-          <button class="btn btn-danger delete" data-mail="{{recipient_mail}}" type="button">Delete</button>
+          <button class="btn btn-danger delete" data-id="{{_id}}" type="button">Delete</button>
         </td>
       </tr>
       {{/each}}

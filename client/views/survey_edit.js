@@ -1,9 +1,3 @@
-var urlRouteIdMail= function(routeName, id, mail){
-  var params = {_id: id};
-  if(mail){params.mail = mail;};
-  return Router.routes[routeName].url(params);
-};
-
 Template.surveyEdit.helpers({
   'surveyName': function () {
     //todox better understand and handle missing survey, waitOn
@@ -21,28 +15,35 @@ Template.surveyEdit.events({
 // loses the active tab if and only if actual update occurs > probably linked to reactivity somehow
 // code below was a tentative to re-set active tab after update but did not work
 //        var href = $('#survey-tabs').find('.active a').attr('href');
-//        console.log("current tab="+href);
+//        cs("current tab",href);
 //        $('#survey-tabs').find('a[href="' + href + '"]').tab('show');
   }
 });
 
 Template.surveyMain.helpers({
-  'urlFill': function () {return urlRouteIdMail('surveyFill', this._id);}
+  'urlFill': function (surveyId, recipientId) {
+//    cs('main.urlFill surveyId',surveyId);
+//    cs('main.urlFill recipientId',recipientId);
+    return urlRouteSurveyRecipient('surveyFill', surveyId, recipientId);
+//    return 'bwaaah?';
+  }
 });
 
 Template.surveyParticipants.helpers({
-  'recipients': function () {return this.recipients;},
-  'urlResults': function (id) {return urlRouteIdMail('surveyResults', id, this.recipient_mail);},
-  'urlFill': function (id) {return urlRouteIdMail('surveyFill', id, this.recipient_mail);}
+  'recipients': function () {
+    return Recipients.find({survey_id: this._id});
+  },
+  'urlResults': function (surveyId, recipientId) {return urlRouteSurveyRecipient('surveyResults', surveyId, recipientId);},
+  'urlFill': function (surveyId, recipientId) {return urlRouteSurveyRecipient('surveyFill', surveyId, recipientId);}
 });
 
 Template.surveyParticipants.events({
   'click .delete': function (e) {
     e.preventDefault();
-    var surveyId = $('#survey-id-input').val();
-    var mailToDel = e.target.getAttribute('data-mail');
-    if (confirm("Delete this recipient (" + mailToDel + ")?")) {
-      callMeteor('recipientDelete', surveyId, mailToDel);
+    var idToDel = e.target.getAttribute('data-id');
+    var recipientToDelete = Recipients.findOne(idToDel);
+    if (confirm("Delete this recipient (" + recipientToDelete.recipient_name + ")?")) {
+      callMeteor('recipientDelete', recipientToDelete._id);
     }
   }
 });

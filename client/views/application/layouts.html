@@ -21,7 +21,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">All surveys <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 {{#each surveysShortList}}
-                  <li><a href="{{pathFor 'surveyEdit'}}">{{name}}</a></li>
+                  <li><a href="{{urlEdit _id}}">{{name}}</a></li>
                 {{/each}}
                 {{#if hasMoreSurveys}}
                   <li><a href="{{pathFor 'surveysList'}}">(more)...</a></li>
@@ -46,7 +46,9 @@
 
 <template name="layoutFill">
   <div class="container">
+    {{setTitle survey.survey_title}}
     <div class="main">
+      <h1>{{survey.survey_title}}</h1>
       {{yield}}
     </div>
   </div>
