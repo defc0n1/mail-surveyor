@@ -7,17 +7,29 @@ Mail-surveyor is a web application that lets you define surveys and recipients, 
 It tracks their answers and provide you with a basic dashboard to follow-up.
 
 I developed it as a way to validate software product ideas for my bootstrapped business,
-and learn Meteor at the same time.
+its intended target is dozens to hundreds of participants, and single page with basic fields survey.
+This is in no way a replacement for MailChimp or SurveyMonkey, but a nice personal alternative for SMB.
 
 The current code runs securely, but the feature set is still missing some key elements (mail sending, graphic editor, results
-dashboard), so I only recommend it for the very brave, and slightly masochistic.
+dashboard), so I only recommend it for the very brave, curious, and slightly masochistic.
 A live demo is available on http://mail-surveyor.meteor.com/ (you need to start by creating a user, top right).
-
 
 Features
 --------
 The current code base allows you to define surveys (in raw HTML...) and add participants, and lets them answer the
 surveys online, if you manually send them the links. Results can be crudely viewed, participant per participant.
+
+Roadmap to 1.0 is as follows:
+1. improve participant experience
+..* when coming back to survey, load previously input fields
+..* upon finish, nice warm fuzzy thank you
+..* custom settings for everything displayed on survey (greeting, mail request, save button)
+2. limit users creation in some way - when I'll deploy it on my server, I don't want the whole internet using it!
+3. add a nice forms editor, raw HTML in a textarea gets old very quickly...
+4. results dashboard and export
+5. send invites directly to participants
+6. celebrate!
+
 
 Used libraries
 --------------
