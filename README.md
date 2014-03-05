@@ -20,10 +20,11 @@ The current code base allows you to define surveys (in raw HTML...) and add part
 surveys online, if you manually send them the links. Results can be crudely viewed, participant per participant.
 
 Roadmap to 1.0 is as follows:
+
 1. improve participant experience
-..* when coming back to survey, load previously input fields
-..* upon finish, nice warm fuzzy thank you
-..* custom settings for everything displayed on survey (greeting, mail request, save button)
+  * when coming back to survey, load previously input fields
+  * upon finish, nice warm fuzzy thank you
+  * custom settings for everything displayed on survey (greeting, mail request, save button)
 2. limit users creation in some way - when I'll deploy it on my server, I don't want the whole internet using it!
 3. add a nice forms editor, raw HTML in a textarea gets old very quickly...
 4. results dashboard and export
