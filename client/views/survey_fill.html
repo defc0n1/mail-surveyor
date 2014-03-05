@@ -1,10 +1,7 @@
 <template name="surveyFill">
-    <!-- if not .in leaves incorrect white space -->
+    <div id="message-flash"></div>
 
-    <div id="message-flash">
-
-    </div>
-
+  <form>
 
   <input id="survey-id-input" type="hidden" value="{{survey._id}}"/>
   {{#if recipient}}
@@ -16,9 +13,12 @@
   {{/if}}
   <hr/>
 
+
   {{{survey.survey_body}}}
 
   <hr/>
 
-  <button class="btn btn-primary btn-block" id="survey-save-btn">Save</button>
+  <input class="btn btn-primary btn-block" id="survey-save-btn" type="submit" value="Save"/>
+
+  </form>
 </template>

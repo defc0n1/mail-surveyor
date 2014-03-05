@@ -25,7 +25,6 @@ The current code base allows you to:
 Roadmap to 1.0 is as follows:
 
 1. improve participant experience
-  * when coming back to survey, load previously input fields
   * custom settings for everything displayed on survey (greeting, mail request, save button)
 2. limit users creation in some way - when I'll deploy it on my server, I don't want the whole internet using it!
 3. add a nice forms editor, raw HTML in a textarea gets old very quickly...
@@ -34,6 +33,18 @@ Roadmap to 1.0 is as follows:
 6. import list of participants
 7. celebrate!
 
+Already included
+* survey definition
+  * numerous customization settings
+  * nice tabbed interface.
+* survey-specific lists of participants
+* online page to fill in survey
+  * page can be public, with creation of participant records behind the scene
+  * each participant has its own private page, which displays previously saved data, allowing completion over multiple sessions
+  * ergonomics: submit on Enter, embedded success/error flash messages, personalized greetings
+* technical features
+  * real-time updates across browser windows
+  * tight security
 
 Used libraries
 --------------

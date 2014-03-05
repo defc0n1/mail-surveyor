@@ -1,9 +1,9 @@
 Meteor.publish('surveysOfUser', function () {
-  return Surveys.find({owner_id: this.userId});
+  return Surveys.find({owner_id: this.userId}, {sort: {created_at: -1}});
 });
 
 Meteor.publish('recipientsOfSurvey', function (surveyId) {
-  return Recipients.find({owner_id: this.userId, survey_id: surveyId});
+  return Recipients.find({owner_id: this.userId, survey_id: surveyId}, {sort: {created_at: -1}});
 });
 
 /*
@@ -24,6 +24,7 @@ Meteor.publish('surveyToFill', function (surveyId) {
 PUBLIC - does not require logged in user.
  */
 Meteor.publish('recipientById', function(recipientId){
+  check(recipientId, String);
   if(!recipientId) {return undefined;}
   return Recipients.find({_id: recipientId});
 });
