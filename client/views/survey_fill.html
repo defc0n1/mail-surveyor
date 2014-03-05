@@ -1,4 +1,11 @@
 <template name="surveyFill">
+    <!-- if not .in leaves incorrect white space -->
+
+    <div id="message-flash">
+
+    </div>
+
+
   <input id="survey-id-input" type="hidden" value="{{survey._id}}"/>
   {{#if recipient}}
     Hello {{recipient.recipient_name}},

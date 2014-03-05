@@ -21,10 +21,9 @@ Template.surveyFill.events({
       Meteor.call('resultCreate', recipientId, data, function (error, result) {
         cs('result', result);
         if (error) {
-          return alert(error.reason);
+          $('#message-flash').append(Template._alert({msg: "<div><strong>Oops!</strong> There was this error:</div><div>"+error.reason+"</div>", type:'danger'}));
        }
-        // todox re-route to a Thank you page
-        Router.go('surveyResults', {survey_id: surveyId, recipient_id: result});
+        $('#message-flash').append(Template._alert({msg: "<strong>Thank you!</strong> Your participation means a lot to us.", type:'success'}));
       });
     } else {
       alert("Apologies, but I really need an email address to store your results.");
