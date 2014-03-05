@@ -11,6 +11,20 @@ Template.surveysList.events({
     if (confirm("Delete this survey (" + survey.survey_name + ")?")) {
       callMeteor('surveyDelete', surveyId);
     }
+  },
+  'click #btn-login-show': function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    // pretty hacky, but gets the job done, and cleaner solutions (.click, .dropdown) fail miserably.
+    Accounts._loginButtonsSession.set('inSignupFlow', true);
+    var elt=$('#login-dropdown-list');
+    elt.toggleClass('open');
+  }
+});
+
+Template.surveysList.helpers({
+  'loggedIn': function(){
+    return Meteor.userId();
   }
 });
 

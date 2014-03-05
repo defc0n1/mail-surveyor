@@ -2,7 +2,15 @@
   <div class="row-fluid">
     <form class="form-inline">
       <h2>All your surveys</h2>
+      {{#if loggedIn }}
       <button class="btn btn-primary btn-sm" id="btn-new-survey">Create new survey</button>
+      {{else}}
+      <div class="jumbotron">
+        <h1>Hi, friendly visitor!</h1>
+        <p>You need to create an account to enjoy all our juicy survey features.</p>
+        <p><a class="btn btn-primary btn-lg" id="btn-login-show" role="button">Let's do it!</a></p>
+      </div>
+      {{/if}}
       <div class="list-group">
         {{#each surveys}}
         {{> surveyItem}}
