@@ -45,7 +45,7 @@ formToData = function (listProperties) {
     var fields = $('form').find("input, textarea, select");
     fields.each(function(index) {
       // lil' hack for radio buttons
-      if($(this).attr('type')!='radio' || this.checked)  {
+      if(($(this).attr('type')!='radio' && $(this).attr('type')!='checkbox') || this.checked)  {
         result[$(this).attr('name')] = $(this).val();
       }
     });
