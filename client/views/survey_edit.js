@@ -46,5 +46,13 @@ Template.surveyParticipants.events({
     if (confirm("Delete this recipient (" + recipientToDelete.recipient_name + ")?")) {
       callMeteor('recipientDelete', recipientToDelete._id);
     }
+  },
+  'click .recipient-set': function(e) {
+    e.preventDefault();
+    var recipientId = e.target.getAttribute('data-id');
+    var recipient = Recipients.findOne(recipientId);
+    cs('rec', recipient);
+    $("#recipient-name-input").val(recipient.recipient_name);
+    $("#recipient-mail-input").val(recipient.recipient_mail);
   }
 });
