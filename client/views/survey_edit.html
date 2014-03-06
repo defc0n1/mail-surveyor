@@ -1,10 +1,10 @@
 <template name="surveyEdit">
   <h2>{{surveyName}}</h2>
   <ul class="nav nav-tabs" id="survey-tabs">
-    <li class="active"><a data-toggle="tab" href="#survey-main">Main</a></li>
-    <li><a data-toggle="tab" href="#survey-participants">Participants <span class="badge">{{survey.recipients_count}}</span></a></li>
-    <li><a data-toggle="tab" href="#survey-invitation">Invitation</a></li>
-    <li><a data-toggle="tab" href="#survey-survey">Survey</a></li>
+    <li class="{{active '#survey-main'}}"><a data-toggle="tab" href="#survey-main">Main</a></li>
+    <li class="{{active '#survey-participants'}}"><a data-toggle="tab" href="#survey-participants">Participants <span class="badge">{{survey.recipients_count}}</span></a></li>
+    <li class="{{active '#survey-invitation'}}"><a data-toggle="tab" href="#survey-invitation">Invitation</a></li>
+    <li class="{{active '#survey-survey'}}"><a data-toggle="tab" href="#survey-survey">Survey</a></li>
   </ul>
   <div class="tab-content">
     {{> surveyMain survey}}

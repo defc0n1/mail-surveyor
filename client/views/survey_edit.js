@@ -13,15 +13,12 @@ Template.surveyEdit.events({
   }
 });
 
-Template.surveyEdit.rendered = function() {
+Template.surveyEdit.rendered = function () {
   // to solve tab loss issue
-  var hash = window.location.hash;
-  if (hash && (hash!== this._hash)){
-    var elt  = $('#survey-tabs a[href="' + window.location.hash + '"]');
-    this._hash = hash;
-    elt.tab('show');
-  }
-}
+  var hash = window.location.hash || '#survey-main'
+  var elt = $('#survey-tabs a[href="' + hash + '"]');
+  elt.tab('show');
+};
 
 Template.surveyMain.helpers({
   'urlFill': function (surveyId, recipientId) {
@@ -31,10 +28,14 @@ Template.surveyMain.helpers({
 
 Template.surveyParticipants.helpers({
   'recipients': function () {
-    return Recipients.find({survey_id: this._id},{sort: {created_at: -1}});
+    return Recipients.find({survey_id: this._id}, {sort: {created_at: -1}});
   },
-  'urlResults': function (surveyId, recipientId) {return urlRouteSurveyRecipient('surveyResults', surveyId, recipientId);},
-  'urlFill': function (surveyId, recipientId) {return urlRouteSurveyRecipient('surveyFill', surveyId, recipientId);}
+  'urlResults': function (surveyId, recipientId) {
+    return urlRouteSurveyRecipient('surveyResults', surveyId, recipientId);
+  },
+  'urlFill': function (surveyId, recipientId) {
+    return urlRouteSurveyRecipient('surveyFill', surveyId, recipientId);
+  }
 });
 
 Template.surveyParticipants.events({
