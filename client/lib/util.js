@@ -54,32 +54,30 @@ propertiesToData = function (listProperties) {
  Returns data object.
  */
 formToData = function (data, toForm) {
-  ca('formToData', arguments);
+//  ca('formToData', arguments);
   var result = data ? data : {};
   var fields = $('form').find("input, textarea, select");
   fields.each(function (index) {
     var type = $(this).attr('type');
     var name = $(this).attr('name');
-    cs(name,type);
+//    cs(name,type);
     // only affect fields with name attribute
     if(!name){
-      console.log('ignore (name)');
+//      console.log('ignore (name)');
       return;
     }
     // these fields don't hold values that map to data
     if ($.inArray(type,['button', 'file', 'image', 'reset', 'search', 'submit'])>=0) {
-      console.log('ignore (type)');
+//      console.log('ignore (type)');
       return;
     }
     // these fields map using the 'checked' option
     if ($.inArray(type,['radio', 'checkbox'])>=0) {
-      console.log('checked');
+//      console.log('checked');
       if (toForm) {
         if (result[name]) {
-          cs('restoring', name);
-//          if(data.hasOwnProperty())
-          $(this).val(result[name]);
-          $this.checked = true;
+//          cs('restoring', name);
+          if($(this).val()===result[name]) {$(this).prop('checked', true);};
         }
       } else {
         if (this.checked) {
@@ -89,9 +87,9 @@ formToData = function (data, toForm) {
       return;
     }
     // all the other fields map simply with val()
-    console.log('val()');
+//    console.log('val()');
     if (toForm) {
-        cs('restoring', name);
+//        cs('restoring', name);
       $(this).val(result[name]);
     } else {
       result[name] = $(this).val();

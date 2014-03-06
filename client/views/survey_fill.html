@@ -1,24 +1,20 @@
 <template name="surveyFill">
-    <div id="message-flash"></div>
+  <div id="message-flash"></div>
 
   <form>
-
-  <input id="survey-id-input" type="hidden" value="{{survey._id}}"/>
-  {{#if recipient}}
+    <input id="survey-id-input" type="hidden" value="{{survey._id}}"/>
+    {{#if recipient}}
     Hello {{recipient.recipient_name}},
     <input id="recipient-id-input" type="hidden" value="{{recipient._id}}"/>
-  {{else}}
-    <label for="recipient-mail-input">Hi, please provide your mail address:</label>
-    <input id="recipient-mail-input" type="email" value="{{recipient_mail}}"/>
-  {{/if}}
-  <hr/>
-
-
-  {{{survey.survey_body}}}
-
-  <hr/>
-
-  <input class="btn btn-primary btn-block" id="survey-save-btn" type="submit" value="Save"/>
-
+    {{else}}
+    <div class="form-group">
+      <label for="recipient-mail-input">Hi, please provide your mail address:</label>
+      <input id="recipient-mail-input" name="recipient-mail-input" type="email" class="form-control" required/>
+    </div>
+    {{/if}}
+    <hr/>
+    {{{survey.survey_body}}}
+    <hr/>
+    <input class="btn btn-primary btn-block" id="survey-save-btn" type="submit" value="Save"/>
   </form>
 </template>
