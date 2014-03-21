@@ -21,6 +21,7 @@
 
 <template name="surveyMain">
   <div class="tab-pane active" id="survey-main">
+    <p></p>
     <form class="form-horizontal" role="form">
       <div class="form-group">
         <label class="col-sm-2 control-label" for="survey-name-input">Name</label>
@@ -52,6 +53,7 @@
 
 <template name="surveyParticipants">
   <div class="tab-pane" id="survey-participants">
+    <p></p>
     <input id="survey-id-input" type="hidden" value="{{_id}}"/>
     {{> newRecipientForm this}}
     <table class="table table-striped">
@@ -87,6 +89,7 @@
 
 <template name="surveyInvitation">
   <div class="tab-pane" id="survey-invitation">
+    <p></p>
     <form class="form-horizontal" role="form">
       <div class="form-group">
         <label class="col-sm-2 control-label" for="mail-subject-input">Subject</label>
@@ -121,6 +124,7 @@
 
 <template name="surveySurvey">
   <div class="tab-pane" id="survey-survey">
+    <p></p>
     <form class="form-horizontal" role="form">
       <div class="form-group">
         <label class="col-sm-2 control-label" for="survey-title-input">Survey page title</label>
