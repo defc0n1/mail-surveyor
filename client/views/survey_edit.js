@@ -30,6 +30,9 @@ Template.surveyParticipants.helpers({
   'recipients': function () {
     return Recipients.find({survey_id: this._id}, {sort: {created_at: -1}});
   },
+  'recipient_state': function () {
+    return this.state ? this.state.stateId : "";
+  },
   'urlResults': function (surveyId, recipientId) {
     return urlRouteSurveyRecipient('surveyResults', surveyId, recipientId);
   },
@@ -39,6 +42,14 @@ Template.surveyParticipants.helpers({
 });
 
 Template.surveyParticipants.events({
+  'click .mail': function (e) {
+    e.preventDefault();
+    var idToMail = e.target.getAttribute('data-id');
+    var recipientToMail = Recipients.findOne(idToMail);
+    if (confirm("Send mail to " + recipientToMail.recipient_name + "?")) {
+      callMeteor('invitationSend', recipientToMail.survey_id, recipientToMail._id);
+    }
+  },
   'click .delete': function (e) {
     e.preventDefault();
     var idToDel = e.target.getAttribute('data-id');
